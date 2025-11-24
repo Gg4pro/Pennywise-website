@@ -22,21 +22,24 @@ const Hero: React.FC = () => {
               - Inter: Bold (700) + Tighter Tracking (-0.05em) 
               - Serif: Medium (500) override to match the 'Features' section style and avoid 700-weight distortion
           */}
-          <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-black leading-[0.9] tracking-tighter mb-8 text-balance">
+          <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-semibold text-black leading-[0.9] tracking-tighter mb-8 text-balance">
             The road to <span className="font-serif italic font-medium">financial</span> freedom <br />
             starts with a single <span className="font-serif italic font-medium">penny.</span>
           </h1>
           
           <p className="text-xl text-slate-600 font-medium mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed tracking-tight">
-            Track expenses, manage budgets, and grow your wealth. No complex spreadsheets, just pure clarity.
+            Stop stressing and start enjoying your life with a simple financial plan you can actually stick to.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-            <button className="px-8 py-4 bg-black text-white rounded-full font-bold text-lg transition-all hover:bg-slate-800 hover:scale-105 active:scale-95 shadow-xl shadow-slate-900/20 w-full sm:w-auto">
-              Start for free
-            </button>
-            <button className="px-8 py-4 bg-white text-black border border-slate-200 rounded-full font-bold text-lg transition-all hover:bg-slate-50 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto">
-              See how it works <ArrowRight className="w-4 h-4" />
+          <div className="flex items-center justify-center lg:justify-start">
+            <button className="px-8 py-4 bg-black text-white rounded-full font-medium text-base transition-all hover:bg-slate-800 hover:scale-105 active:scale-95 shadow-xl shadow-slate-900/20 flex items-center gap-3">
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              <div className="text-left">
+                <div className="text-[10px] leading-none mb-0.5">Download on the</div>
+                <div className="text-xl font-semibold leading-none">App Store</div>
+              </div>
             </button>
           </div>
         </motion.div>

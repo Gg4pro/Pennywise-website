@@ -1,27 +1,26 @@
 
 import React from 'react';
 
-const LOGOS = [
-  "FinanceWeekly", "TechCrunch", "Forbes", "TheVerge", "Wired", "Bloomberg", 
-  "CNBC", "WallStreetJ", "Investopedia", "Morningstar"
+const WORDS = [
+  "Save", "Track", "Budget", "Manage", "Grow", "Plan", "Organize", "Achieve"
 ];
 
 const Ticker: React.FC = () => {
   return (
     <section className="w-full bg-white py-12 border-b border-slate-100 overflow-hidden">
       <div className="relative flex overflow-x-hidden group">
-        <div className="animate-marquee whitespace-nowrap flex space-x-20 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-          {LOGOS.concat(LOGOS).map((logo, index) => (
+        <div className="animate-marquee whitespace-nowrap flex space-x-20 opacity-40 hover:opacity-100 transition-all duration-500">
+          {WORDS.concat(WORDS).map((word, index) => (
             <span key={index} className="text-3xl font-serif italic font-bold cursor-default">
-              {logo}
+              {word}
             </span>
           ))}
         </div>
-        
-        <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex space-x-20 ml-20 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-          {LOGOS.concat(LOGOS).map((logo, index) => (
+
+        <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex space-x-20 ml-20 opacity-40 hover:opacity-100 transition-all duration-500">
+          {WORDS.concat(WORDS).map((word, index) => (
             <span key={`dup-${index}`} className="text-3xl font-serif italic font-bold cursor-default">
-              {logo}
+              {word}
             </span>
           ))}
         </div>
