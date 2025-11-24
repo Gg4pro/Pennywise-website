@@ -68,8 +68,8 @@ const Hero: React.FC = () => {
                
                {/* Header */}
                <div className="flex justify-between items-center mb-4 md:mb-6">
-                 <div className="w-8 h-8 md:w-10 md:h-10 bg-black rounded-full flex items-center justify-center text-white">
-                   <span className="font-serif italic text-lg md:text-xl">P</span>
+                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
+                   <img src="/images/pennywise-icon.png" alt="Pennywise" className="w-full h-full object-cover" />
                  </div>
                  <div className="w-8 h-8 rounded-full bg-slate-200"></div>
                </div>

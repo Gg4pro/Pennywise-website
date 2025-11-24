@@ -11,10 +11,8 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer">
-            <span className="font-medium text-2xl tracking-tight text-slate-900">
-              Penny<span className="font-serif italic text-3xl">wise</span>
-            </span>
+          <div className="flex items-center cursor-pointer">
+            <img src="/images/pennywise-logo.png" alt="Pennywise" className="h-10" />
           </div>
 
           {/* Desktop Menu */}
