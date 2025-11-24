@@ -2,25 +2,22 @@ import React from 'react';
 
 const REVIEWS = [
   {
-    initials: "SJ",
-    color: "bg-pink-500",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces",
     name: "Sarah Jenkins",
     role: "Freelancer",
-    text: "I used to be scared to look at my bank account. Pennywise makes it actually fun. The UI is just gorgeous."
+    text: "I was constantly anxious about overdrafting. Pennywise finally gave me clarity on where my money goes. Now I actually feel in control of my finances."
   },
   {
-    initials: "MR",
-    color: "bg-indigo-500",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces",
     name: "Mike Ross",
     role: "Product Designer",
-    text: "As a designer, I appreciate the attention to detail. The animations are buttery smooth. Best finance app period."
+    text: "Every other budgeting app felt like homework. I'd open them once and never again. Pennywise is the only one I actually want to use daily. It just works."
   },
   {
-    initials: "JL",
-    color: "bg-orange-500",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=faces",
     name: "Jessica Lee",
     role: "Student",
-    text: "The budgeting features saved me so much money this semester. Highly recommend for anyone trying to save."
+    text: "My student budget was a mess. I'd lose track of subscriptions and impulse buys constantly. This app helped me cut my spending by 30% without feeling restricted."
   }
 ];
 
@@ -38,18 +35,20 @@ const Testimonials: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {REVIEWS.map((review, idx) => (
-          <div key={idx} className="bg-slate-50 p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-300 group">
+          <div key={idx} className="bg-white p-10 rounded-[2.5rem] shadow-xl shadow-slate-300/70 hover:shadow-2xl hover:shadow-slate-400 transition-all duration-300 group border border-slate-100">
             <div className="flex items-center gap-4 mb-8">
-              <div className={`w-14 h-14 rounded-full ${review.color} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
-                {review.initials}
-              </div>
+              <img
+                src={review.image}
+                alt={review.name}
+                className="w-14 h-14 rounded-full object-cover shadow-lg"
+              />
               <div>
                 <h4 className="font-medium text-slate-900 text-lg">{review.name}</h4>
                 <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{review.role}</p>
               </div>
             </div>
             <p className="text-slate-700 leading-relaxed font-medium text-lg">"{review.text}"</p>
-            <div className="mt-8 flex text-slate-900 gap-1">
+            <div className="mt-8 flex text-yellow-500 gap-1">
                {[1,2,3,4,5].map(s => (
                  <span key={s} className="text-xl">★</span>
                ))}

@@ -19,7 +19,7 @@ const App: React.FC = () => {
   });
 
   return (
-    <div className="relative min-h-screen selection:bg-purple-200 selection:text-purple-900">
+    <div className="relative min-h-screen">
       {/* Global Noise Texture */}
       <div className="bg-noise" />
 
