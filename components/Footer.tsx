@@ -1,12 +1,51 @@
 import React from 'react';
 import { Instagram } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleScrollTo = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = 80; // 80px = h-20
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80; // 80px = h-20
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    // Use setTimeout to ensure navigation completes before scrolling
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto' // Use 'auto' for instant scroll to top
+      });
+    }, 100);
   };
 
   return (
@@ -38,7 +77,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6">Company</h4>
             <ul className="space-y-4 text-slate-500">
-              <li><a href="#" className="hover:text-slate-900 transition-colors">About Us</a></li>
+              <li><button onClick={() => handleNavigation('/about')} className="hover:text-slate-900 transition-colors cursor-pointer">About Us</button></li>
             </ul>
           </div>
         </div>

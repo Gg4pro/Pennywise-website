@@ -45,17 +45,18 @@ const HowItWorks: React.FC = () => {
   }, [features.length]);
 
   return (
-    <section id="how-it-works" className="relative py-16 md:py-24 lg:py-32 px-6 w-full max-w-7xl mx-auto">
+    <section id="how-it-works" className="relative py-16 md:py-24 lg:py-32 px-6 w-full">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 bg-pattern-grid [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
-      <div className="mb-12 md:mb-16 text-center">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12 md:mb-16 text-center">
         <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium text-slate-900 mb-6 leading-[0.95] tracking-tight">
           How it <span className="font-serif italic">works</span>
         </h2>
-      </div>
+        </div>
 
-      <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
 
         {/* Left Side - iPhone Mockup */}
         <div className="w-full lg:flex-1 flex justify-center lg:justify-end lg:-ml-[274px]">
@@ -123,6 +124,7 @@ const HowItWorks: React.FC = () => {
           })}
         </div>
 
+        </div>
       </div>
     </section>
   );

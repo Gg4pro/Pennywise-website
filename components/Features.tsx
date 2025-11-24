@@ -4,18 +4,19 @@ import { PieChart, Zap, Shield, Bell, CreditCard, ArrowRight } from 'lucide-reac
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="relative py-32 px-6 w-full max-w-7xl mx-auto">
+    <section id="features" className="relative py-32 px-6 w-full">
       {/* Background Dots Texture */}
       <div className="absolute inset-0 -z-10 bg-pattern-dots [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
-      <div className="mb-20 text-center">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-20 text-center">
         <h2 className="text-5xl md:text-7xl font-medium text-slate-900 mb-6 leading-[0.95] tracking-tight">
           Everything you need. <br/>
           <span className="font-serif italic text-slate-900">Nothing you don't.</span>
         </h2>
-      </div>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[minmax(280px,auto)]">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[minmax(280px,auto)]">
         
         {/* Card 1: Smart Insights (Vibrant Gradient) */}
         <motion.div
@@ -123,6 +124,7 @@ const Features: React.FC = () => {
           <h3 className="text-2xl font-medium text-white leading-tight font-serif italic">Start your journey</h3>
         </motion.div>
 
+        </div>
       </div>
     </section>
   );

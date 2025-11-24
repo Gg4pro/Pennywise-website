@@ -4,11 +4,12 @@ import { Layers, Smartphone, Calendar } from 'lucide-react';
 
 const MobileAppShowcase: React.FC = () => {
   return (
-    <section className="relative py-32 px-6 w-full max-w-7xl mx-auto">
+    <section className="relative py-32 px-6 w-full">
       {/* Background Line Texture */}
       <div className="absolute inset-0 -z-10 bg-pattern-lines" />
 
-      <div className="bg-slate-900 rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="bg-slate-900 rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden">
         {/* Background Graphic */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500 rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/4" />
         
@@ -105,6 +106,7 @@ const MobileAppShowcase: React.FC = () => {
               </div>
            </div>
 
+        </div>
         </div>
       </div>
     </section>

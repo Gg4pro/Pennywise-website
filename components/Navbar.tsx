@@ -2,22 +2,64 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleScrollTo = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsOpen(false);
+    setIsOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = 80; // 80px = h-20
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Increased timeout for route change
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80; // 80px = h-20
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
+  const handleNavigation = (path: string) => {
+    setIsOpen(false);
+    navigate(path);
+
+    // Scroll to top after navigation completes
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto' // Use 'auto' instead of 'smooth' for instant scroll
+      });
+    }, 100);
+  };
+
   const navItems = [
-    { label: 'Features', id: 'features' },
-    { label: 'How it works', id: 'how-it-works' },
-    { label: 'Reviews', id: 'testimonials' }
+    { label: 'Features', id: 'features', type: 'scroll' },
+    { label: 'How it works', id: 'how-it-works', type: 'scroll' },
+    { label: 'Reviews', id: 'testimonials', type: 'scroll' },
+    { label: 'About Us', path: '/about', type: 'page' }
   ];
 
   return (
@@ -25,16 +67,16 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer" onClick={() => handleScrollTo('hero')}>
+          <div className="flex items-center cursor-pointer" onClick={() => handleNavigation('/')}>
             <img src="/images/pennywise-logo.png" alt="Pennywise" className="h-10" />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <button
-                key={item.id}
-                onClick={() => handleScrollTo(item.id)}
+                key={index}
+                onClick={() => item.type === 'scroll' ? handleScrollTo(item.id!) : handleNavigation(item.path!)}
                 className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
               >
                 {item.label}
@@ -77,10 +119,10 @@ const Navbar: React.FC = () => {
             className="md:hidden bg-white border-b border-gray-100 overflow-hidden"
           >
             <div className="px-6 py-8 space-y-6 flex flex-col items-center text-center">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <button
-                  key={item.id}
-                  onClick={() => handleScrollTo(item.id)}
+                  key={index}
+                  onClick={() => item.type === 'scroll' ? handleScrollTo(item.id!) : handleNavigation(item.path!)}
                   className="text-lg font-medium text-slate-900"
                 >
                   {item.label}

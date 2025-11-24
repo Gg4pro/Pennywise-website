@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Ticker from './components/Ticker';
-import Features from './components/Features';
-import HowItWorks from './components/HowItWorks';
-import MobileAppShowcase from './components/MobileAppShowcase';
-import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import CTASection from './components/CTASection';
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -19,30 +15,27 @@ const App: React.FC = () => {
   });
 
   return (
-    <div className="relative min-h-screen">
-      {/* Global Noise Texture */}
-      <div className="bg-noise" />
+    <Router>
+      <div className="relative min-h-screen">
+        {/* Global Noise Texture */}
+        <div className="bg-noise" />
 
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-purple-600 origin-left z-50"
-        style={{ scaleX }}
-      />
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-purple-600 origin-left z-50"
+          style={{ scaleX }}
+        />
 
-      <Navbar />
-      
-      <main className="flex flex-col items-center w-full">
-        <Hero />
-        <Ticker />
-        <Features />
-        <HowItWorks />
-        <MobileAppShowcase />
-        <Testimonials />
-        <CTASection />
-      </main>
+        <Navbar />
 
-      <Footer />
-    </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

@@ -23,17 +23,18 @@ const REVIEWS = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="relative py-32 px-6 w-full max-w-7xl mx-auto">
+    <section id="testimonials" className="relative py-32 px-6 w-full">
        {/* Background Grid Texture */}
       <div className="absolute inset-0 -z-10 bg-pattern-grid [mask-image:linear-gradient(to_bottom,transparent_0%,black_50%,transparent_100%)]" />
 
-      <div className="text-center mb-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
         <h2 className="text-5xl md:text-6xl font-medium text-slate-900 mb-6 tracking-tight">
           Loved by <span className="font-serif italic">everyone.</span>
         </h2>
-      </div>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {REVIEWS.map((review, idx) => (
           <div key={idx} className="bg-white p-10 rounded-[2.5rem] shadow-xl shadow-slate-300/70 hover:shadow-2xl hover:shadow-slate-400 transition-all duration-300 group border border-slate-100">
             <div className="flex items-center gap-4 mb-8">
@@ -55,6 +56,7 @@ const Testimonials: React.FC = () => {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );

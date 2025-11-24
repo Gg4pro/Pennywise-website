@@ -5,11 +5,11 @@ import { ArrowRight, TrendingUp, PieChart, DollarSign, CreditCard } from 'lucide
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 w-full max-w-7xl mx-auto overflow-hidden lg:overflow-visible">
+    <section id="hero" className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 w-full overflow-hidden lg:overflow-visible">
       {/* Background Grid Texture - Masked to fade out at bottom */}
       <div className="absolute inset-0 -z-10 bg-pattern-grid [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
 
-      <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
         
         {/* Left Content */}
         <motion.div 
