@@ -4,7 +4,7 @@ import { Layers, Smartphone, Share2 } from 'lucide-react';
 
 const MobileAppShowcase: React.FC = () => {
   return (
-    <section id="how-it-works" className="relative py-32 px-6 w-full max-w-7xl mx-auto">
+    <section className="relative py-32 px-6 w-full max-w-7xl mx-auto">
       {/* Background Line Texture */}
       <div className="absolute inset-0 -z-10 bg-pattern-lines" />
 

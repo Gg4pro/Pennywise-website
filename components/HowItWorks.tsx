@@ -1,38 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, Database, TrendingUp, Bell } from 'lucide-react';
+import { Target, TrendingUp, Eye, Zap } from 'lucide-react';
 
 const HowItWorks: React.FC = () => {
   const [activeFeature, setActiveFeature] = useState(0);
 
   const features = [
     {
-      icon: Camera,
-      title: "Track Your Food With Just a Picture",
-      description: "Snap a photo with Pennywise, and your phone's depth sensor calculates food volume. Our AI then analyzes and breaks down your meal to determine calories, protein, carbs, and fat.",
+      icon: Target,
+      title: "Create your 12-month goal",
+      description: "Set clear financial targets that matter to you. Whether it's building an emergency fund, saving for a dream purchase, or paying off debt, Pennywise helps you break down big goals into manageable monthly milestones.",
       color: "from-orange-400 to-pink-500",
-      iconBg: "bg-orange-500"
+      iconBg: "bg-emerald-500"
     },
     {
-      icon: Database,
-      title: "Search Our Database of over 1 million foods",
-      description: "Quickly find and log foods from our extensive database. Search by name, brand, or scan barcodes for instant nutritional information.",
+      icon: TrendingUp,
+      title: "Track your cash flow daily",
+      description: "Stay on top of your money with real-time insights. Monitor every penny coming in and going out, categorize expenses automatically, and understand exactly where your money goes each day.",
       color: "from-blue-400 to-cyan-500",
       iconBg: "bg-blue-500"
     },
     {
-      icon: TrendingUp,
-      title: "Complete Progress Tracking and AI suggestions",
-      description: "Monitor your weight, measurements, and nutrition goals. Get personalized AI suggestions to stay on track and optimize your diet.",
+      icon: Eye,
+      title: "Keep an eye on your insights",
+      description: "Discover patterns in your spending with intelligent analytics. See exactly where your money is going, identify your biggest expense categories, and make smarter financial decisions based on clear, visual data.",
       color: "from-purple-400 to-pink-500",
       iconBg: "bg-purple-500"
     },
     {
-      icon: Bell,
-      title: "Keep track of your water and daily exercise",
-      description: "Log your water intake and daily exercise effortlessly. Cal AI helps you stay hydrated and active, integrating seamlessly with your fitness routine.",
+      icon: Zap,
+      title: "Stay committed and build lasting habits",
+      description: "Transform your relationship with money through consistency. Daily reminders keep you on track while you develop the discipline and routines that lead to financial freedom and lasting success.",
       color: "from-green-400 to-teal-500",
-      iconBg: "bg-green-500"
+      iconBg: "bg-amber-500"
     }
   ];
 
@@ -45,151 +45,39 @@ const HowItWorks: React.FC = () => {
   }, [features.length]);
 
   return (
-    <section className="relative py-32 px-6 w-full max-w-7xl mx-auto">
+    <section id="how-it-works" className="relative py-16 md:py-24 lg:py-32 px-6 w-full max-w-7xl mx-auto">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 bg-pattern-grid [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
-      <div className="mb-16 text-center">
-        <h2 className="text-5xl md:text-7xl font-medium text-slate-900 mb-6 leading-[0.95] tracking-tight">
+      <div className="mb-12 md:mb-16 text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium text-slate-900 mb-6 leading-[0.95] tracking-tight">
           How it <span className="font-serif italic">works</span>
         </h2>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-10 max-w-6xl mx-auto">
+      <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
 
         {/* Left Side - iPhone Mockup */}
-        <div className="flex-1 flex justify-center lg:justify-end lg:-ml-[274px]">
-          <div className="relative w-full max-w-[280px]">
+        <div className="w-full lg:flex-1 flex justify-center lg:justify-end lg:-ml-[274px]">
+          <div className="relative w-full max-w-[240px] md:max-w-[260px] lg:max-w-[280px]">
             {/* iPhone Frame */}
             <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
               {/* Notch */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-3xl z-20"></div>
 
               {/* Screen */}
-              <div className="relative bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
+              <div className="relative rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
                 <AnimatePresence mode="wait">
-                  <motion.div
+                  <motion.img
                     key={activeFeature}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+                    src={`/images/screen-${activeFeature + 1}.png`}
+                    alt={features[activeFeature].title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className={`absolute inset-0 bg-gradient-to-br ${features[activeFeature].color} p-6 flex flex-col justify-between`}
-                  >
-                    {/* Header */}
-                    <div className="flex justify-between items-center">
-                      <div className="text-xs text-white/80 font-bold">12:48 PM</div>
-                      <div className="flex gap-1">
-                        <div className="w-1 h-1 bg-white/80 rounded-full"></div>
-                        <div className="w-1 h-1 bg-white/80 rounded-full"></div>
-                        <div className="w-1 h-1 bg-white/80 rounded-full"></div>
-                      </div>
-                    </div>
-
-                    {/* Content based on feature */}
-                    {activeFeature === 0 && (
-                      <div className="flex-1 flex flex-col items-center justify-center">
-                        <div className="w-40 h-40 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center mb-4">
-                          <Camera className="w-20 h-20 text-white" />
-                        </div>
-                        <div className="bg-white/90 backdrop-blur rounded-2xl p-4 w-full">
-                          <h4 className="font-bold text-slate-900 mb-1">Salmon and Broccoli Tray Bake</h4>
-                          <div className="flex justify-between text-sm text-slate-600">
-                            <div><span className="font-bold text-orange-600">621</span> cal</div>
-                            <div><span className="font-bold">52g</span> protein</div>
-                          </div>
-                          <div className="mt-3 h-2 bg-green-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-green-500 rounded-full" style={{ width: '70%' }}></div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeFeature === 1 && (
-                      <div className="flex-1 flex flex-col justify-center space-y-3 px-2">
-                        <div className="bg-white/90 backdrop-blur rounded-xl p-3 flex items-center gap-3">
-                          <div className="w-10 h-10 bg-blue-100 rounded-lg"></div>
-                          <div className="flex-1">
-                            <div className="h-2 bg-slate-200 rounded w-3/4 mb-1"></div>
-                            <div className="h-2 bg-slate-100 rounded w-1/2"></div>
-                          </div>
-                        </div>
-                        <div className="bg-white/90 backdrop-blur rounded-xl p-3 flex items-center gap-3">
-                          <div className="w-10 h-10 bg-green-100 rounded-lg"></div>
-                          <div className="flex-1">
-                            <div className="h-2 bg-slate-200 rounded w-2/3 mb-1"></div>
-                            <div className="h-2 bg-slate-100 rounded w-1/3"></div>
-                          </div>
-                        </div>
-                        <div className="bg-white/90 backdrop-blur rounded-xl p-3 flex items-center gap-3">
-                          <div className="w-10 h-10 bg-purple-100 rounded-lg"></div>
-                          <div className="flex-1">
-                            <div className="h-2 bg-slate-200 rounded w-3/5 mb-1"></div>
-                            <div className="h-2 bg-slate-100 rounded w-2/5"></div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeFeature === 2 && (
-                      <div className="flex-1 flex flex-col justify-center items-center">
-                        <div className="text-white text-center mb-6">
-                          <div className="text-5xl font-bold mb-2">7/10</div>
-                          <div className="text-white/80 text-sm font-medium">Health Score</div>
-                        </div>
-                        <div className="w-full space-y-3">
-                          <div className="bg-white/90 backdrop-blur rounded-xl p-3">
-                            <div className="flex justify-between text-xs text-slate-600 mb-1">
-                              <span className="font-bold">Protein</span>
-                              <span>52g / 60g</span>
-                            </div>
-                            <div className="h-2 bg-purple-200 rounded-full overflow-hidden">
-                              <div className="h-full bg-purple-500 rounded-full" style={{ width: '87%' }}></div>
-                            </div>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur rounded-xl p-3">
-                            <div className="flex justify-between text-xs text-slate-600 mb-1">
-                              <span className="font-bold">Carbs</span>
-                              <span>90g / 150g</span>
-                            </div>
-                            <div className="h-2 bg-pink-200 rounded-full overflow-hidden">
-                              <div className="h-full bg-pink-500 rounded-full" style={{ width: '60%' }}></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeFeature === 3 && (
-                      <div className="flex-1 flex flex-col justify-center space-y-4">
-                        <div className="bg-white/90 backdrop-blur rounded-2xl p-5 text-center">
-                          <div className="text-4xl font-bold text-slate-900 mb-1">2.4L</div>
-                          <div className="text-sm text-slate-600">Water today</div>
-                          <div className="mt-3 flex justify-center gap-1">
-                            {[1, 1, 1, 1, 1, 0.5, 0, 0].map((opacity, i) => (
-                              <div key={i} className="w-6 h-8 bg-blue-500 rounded-full" style={{ opacity }}></div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="bg-white/90 backdrop-blur rounded-2xl p-5 text-center">
-                          <div className="text-3xl font-bold text-slate-900 mb-1">45 min</div>
-                          <div className="text-sm text-slate-600">Exercise today</div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Bottom indicator */}
-                    <div className="flex justify-center gap-1.5 pb-2">
-                      {features.map((_, idx) => (
-                        <div
-                          key={idx}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            idx === activeFeature ? 'bg-white w-6' : 'bg-white/40 w-1.5'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </motion.div>
+                    className="absolute inset-0 w-full h-full object-fill"
+                  />
                 </AnimatePresence>
               </div>
             </div>
@@ -197,7 +85,7 @@ const HowItWorks: React.FC = () => {
         </div>
 
         {/* Right Side - Feature List */}
-        <div className="flex-1 space-y-6">
+        <div className="w-full lg:flex-1 space-y-4 md:space-y-6">
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             const isActive = idx === activeFeature;
@@ -211,19 +99,19 @@ const HowItWorks: React.FC = () => {
                   isActive ? 'opacity-100' : 'opacity-40 hover:opacity-70'
                 }`}
               >
-                <div className="flex gap-5 items-start group">
-                  <div className={`w-14 h-14 ${feature.iconBg} rounded-2xl flex items-center justify-center text-white flex-shrink-0 shadow-lg transition-transform duration-300 ${
+                <div className="flex gap-4 md:gap-5 items-start group">
+                  <div className={`w-12 h-12 md:w-14 md:h-14 ${feature.iconBg} rounded-xl md:rounded-2xl flex items-center justify-center text-white flex-shrink-0 shadow-lg transition-transform duration-300 ${
                     isActive ? 'scale-110' : 'scale-100 group-hover:scale-105'
                   }`}>
-                    <Icon className="w-7 h-7" />
+                    <Icon className="w-6 h-6 md:w-7 md:h-7" />
                   </div>
                   <div className="flex-1">
-                    <h3 className={`text-2xl font-medium mb-2 transition-colors ${
+                    <h3 className={`text-lg md:text-xl lg:text-2xl font-medium mb-1 md:mb-2 transition-colors ${
                       isActive ? 'text-slate-900' : 'text-slate-600'
                     }`}>
                       {feature.title}
                     </h3>
-                    <p className={`text-slate-500 leading-relaxed transition-all duration-300 ${
+                    <p className={`text-sm md:text-base text-slate-500 leading-relaxed transition-all duration-300 ${
                       isActive ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
                     }`}>
                       {feature.description}
