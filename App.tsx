@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Ticker from './components/Ticker';
 import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
 import MobileAppShowcase from './components/MobileAppShowcase';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
@@ -34,6 +35,7 @@ const App: React.FC = () => {
         <Hero />
         <Ticker />
         <Features />
+        <HowItWorks />
         <MobileAppShowcase />
         <Testimonials />
         <CTASection />
