@@ -11,7 +11,7 @@ const MobileAppShowcase: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="bg-slate-900 rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden">
         {/* Background Graphic */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500 rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/4" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500 rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/4 will-change-transform" style={{ transform: 'translate3d(25%, -50%, 0)' }} />
         
         <div className="flex flex-col lg:flex-row items-center gap-20 relative z-10">
            
@@ -46,12 +46,13 @@ const MobileAppShowcase: React.FC = () => {
 
            {/* Graphic Visual */}
            <div className="flex-1 flex justify-center lg:justify-end w-full">
-              <div className="relative w-full max-w-[400px] aspect-square">
+              <div className="relative w-full max-w-[400px] h-[500px] lg:h-auto lg:aspect-square overflow-visible">
                  {/* Layer 1 - Transactions Card */}
                  <motion.div
                    animate={{ y: [0, -15, 0], rotate: [-3, 0, -3] }}
                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute top-8 left-0 w-72 h-[420px] bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 rounded-[2.5rem] shadow-2xl z-10 p-8 flex flex-col"
+                   className="absolute top-8 left-0 w-72 h-[420px] bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 rounded-[2.5rem] shadow-2xl z-10 p-8 flex flex-col will-change-transform"
+                   style={{ transform: 'translateZ(0)' }}
                  >
                     <div className="flex items-center justify-between mb-8">
                        <div className="text-white/90 text-sm font-medium uppercase tracking-wider">Recent Activity</div>
@@ -79,7 +80,8 @@ const MobileAppShowcase: React.FC = () => {
                  <motion.div
                    animate={{ y: [0, 15, 0], rotate: [3, 0, 3] }}
                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute top-0 right-0 w-72 h-[420px] bg-gradient-to-br from-slate-800 via-slate-900 to-black rounded-[2.5rem] shadow-2xl z-20 p-8 flex flex-col justify-between border border-slate-700/50"
+                   className="absolute top-0 right-0 w-72 h-[420px] bg-gradient-to-br from-slate-800 via-slate-900 to-black rounded-[2.5rem] shadow-2xl z-20 p-8 flex flex-col justify-between border border-slate-700/50 will-change-transform"
+                   style={{ transform: 'translateZ(0)' }}
                  >
                     <div className="flex justify-between items-center">
                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">

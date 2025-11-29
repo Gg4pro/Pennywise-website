@@ -78,6 +78,7 @@ const Footer: React.FC = () => {
             <h4 className="font-bold text-slate-900 mb-6">Company</h4>
             <ul className="space-y-4 text-slate-500">
               <li><button onClick={() => handleNavigation('/about')} className="hover:text-slate-900 transition-colors cursor-pointer">About Us</button></li>
+              <li><button onClick={() => handleNavigation('/contact')} className="hover:text-slate-900 transition-colors cursor-pointer">Contact Us</button></li>
             </ul>
           </div>
         </div>

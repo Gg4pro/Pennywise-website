@@ -28,17 +28,20 @@ const Navbar: React.FC = () => {
         }
       }, 300); // Increased timeout for route change
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const navbarHeight = 80; // 80px = h-20
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navbarHeight;
+      // Add delay to allow mobile menu to close before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = 80; // 80px = h-20
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navbarHeight;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Wait for mobile menu close animation
     }
   };
 
@@ -67,6 +70,7 @@ const Navbar: React.FC = () => {
     { label: 'Features', id: 'features', type: 'scroll' },
     { label: 'How it works', id: 'how-it-works', type: 'scroll' },
     { label: 'Reviews', id: 'testimonials', type: 'scroll' },
+    { label: 'Contact Us', path: '/contact', type: 'page' },
     { label: 'About Us', path: '/about', type: 'page' }
   ];
 

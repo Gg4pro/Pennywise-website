@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Target, TrendingUp, Eye, Zap } from 'lucide-react';
+import { Target, TrendingUp, Eye, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const HowItWorks: React.FC = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -36,13 +36,13 @@ const HowItWorks: React.FC = () => {
     }
   ];
 
-  // Auto-rotate features every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % features.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [features.length]);
+  const handlePrevious = () => {
+    setActiveFeature((prev) => (prev - 1 + features.length) % features.length);
+  };
+
+  const handleNext = () => {
+    setActiveFeature((prev) => (prev + 1) % features.length);
+  };
 
   return (
     <section id="how-it-works" className="relative py-16 md:py-24 lg:py-32 px-6 w-full">
@@ -56,10 +56,27 @@ const HowItWorks: React.FC = () => {
         </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8 lg:gap-10 max-w-6xl mx-auto relative">
 
-        {/* Left Side - iPhone Mockup */}
-        <div className="w-full lg:flex-1 flex justify-center lg:justify-end lg:-ml-[274px]">
+        {/* Left Side - iPhone Mockup with Mobile Navigation */}
+        <div className="w-full lg:flex-1 flex justify-center lg:justify-end lg:-ml-[274px] relative">
+          {/* Mobile Navigation Arrows - Positioned closer to iPhone (50% closer) */}
+          <button
+            onClick={handlePrevious}
+            className="lg:hidden absolute left-[15%] top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-50 transition-all active:scale-95"
+            aria-label="Previous feature"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="lg:hidden absolute right-[15%] top-1/2 -translate-y-1/2 translate-x-1/2 z-30 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-50 transition-all active:scale-95"
+            aria-label="Next feature"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
           <div className="relative w-full max-w-[240px] md:max-w-[260px] lg:max-w-[280px]">
             {/* iPhone Frame */}
             <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
@@ -124,6 +141,40 @@ const HowItWorks: React.FC = () => {
           })}
         </div>
 
+        </div>
+
+        {/* Desktop Navigation Arrows - Bottom center */}
+        <div className="hidden lg:flex items-center justify-center gap-4 mt-12">
+          <button
+            onClick={handlePrevious}
+            className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-50 transition-all active:scale-95"
+            aria-label="Previous feature"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {features.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveFeature(idx)}
+                className={`transition-all duration-300 rounded-full ${
+                  idx === activeFeature
+                    ? 'w-8 h-2 bg-slate-300 shadow-md'
+                    : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+                aria-label={`Go to feature ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={handleNext}
+            className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-900 hover:bg-slate-50 transition-all active:scale-95"
+            aria-label="Next feature"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
       </div>
     </section>
