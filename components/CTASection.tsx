@@ -23,9 +23,11 @@ const CTASection: React.FC = () => {
             </p>
 
             <div className="flex justify-center">
-              <button className="px-10 py-5 bg-white text-blue-600 rounded-full font-bold text-lg hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all shadow-lg">
-                Get started now
-              </button>
+              <a href="https://apps.apple.com/si/app/pennywise-finance-tracker/id6754343519" target="_blank" rel="noopener noreferrer">
+                <button className="px-10 py-5 bg-white text-blue-600 rounded-full font-bold text-lg hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all shadow-lg">
+                  Get started now
+                </button>
+              </a>
             </div>
          </div>
       </div>

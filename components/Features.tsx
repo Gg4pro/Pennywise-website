@@ -88,8 +88,8 @@ const Features: React.FC = () => {
                 </p>
               </div>
 
-              {/* Abstract Card Graphic */}
-              <div className="absolute bottom-4 -right-8 w-48 h-32 md:w-64 md:h-40 md:-bottom-12 md:-right-12 bg-blue-600 rounded-2xl shadow-2xl transform -rotate-12 group-hover:-rotate-6 transition-all duration-500 flex flex-col justify-between p-4 md:p-5 border-t border-white/20">
+              {/* Abstract Card Graphic - On mobile: below text, On desktop: bottom-right */}
+              <div className="relative mt-4 w-48 h-32 md:absolute md:w-64 md:h-40 md:-bottom-12 md:-right-12 md:mt-0 bg-blue-600 rounded-2xl shadow-2xl transform -rotate-12 group-hover:-rotate-6 transition-all duration-500 flex flex-col justify-between p-4 md:p-5 border-t border-white/20">
                  <div className="flex justify-between">
                    <div className="w-6 h-4 md:w-8 md:h-5 bg-white/20 rounded"></div>
                    <div className="text-white/50 font-mono text-[10px] md:text-xs">DEBIT</div>
@@ -114,15 +114,17 @@ const Features: React.FC = () => {
         </motion.div>
 
         {/* Card 6: Call to Action Card (Green) */}
-        <motion.div
-          whileHover={{ scale: 0.98 }}
-          className="md:col-span-1 bg-emerald-500 rounded-[2.5rem] p-8 shadow-xl flex flex-col justify-center items-center text-center gap-4 cursor-pointer group"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-             <ArrowRight className="w-8 h-8 text-emerald-500 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-          </div>
-          <h3 className="text-2xl font-medium text-white leading-tight font-serif italic">Start your journey</h3>
-        </motion.div>
+        <a href="https://apps.apple.com/si/app/pennywise-finance-tracker/id6754343519" target="_blank" rel="noopener noreferrer" className="md:col-span-1">
+          <motion.div
+            whileHover={{ scale: 0.98 }}
+            className="bg-emerald-500 rounded-[2.5rem] p-8 shadow-xl flex flex-col justify-center items-center text-center gap-4 cursor-pointer group h-full"
+          >
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+               <ArrowRight className="w-8 h-8 text-emerald-500 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+            </div>
+            <h3 className="text-2xl font-medium text-white leading-tight font-serif italic">Start your journey</h3>
+          </motion.div>
+        </a>
 
         </div>
       </div>

@@ -51,7 +51,7 @@ const HowItWorks: React.FC = () => {
 
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 md:mb-16 text-center">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium text-slate-900 mb-6 leading-[0.95] tracking-tight">
+        <h2 className="text-5xl md:text-7xl font-medium text-slate-900 mb-6 leading-[0.95] tracking-tight">
           How it <span className="font-serif italic">works</span>
         </h2>
         </div>

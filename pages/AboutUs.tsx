@@ -6,7 +6,7 @@ const AboutUs: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 w-full">
+      <section className="relative pt-32 pb-16 px-6 w-full">
         {/* Background Grid Texture */}
         <div className="absolute inset-0 -z-10 bg-pattern-grid [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
 
@@ -29,7 +29,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="relative py-32 px-6 w-full">
+      <section className="relative pt-20 pb-12 px-6 w-full">
         {/* Background Dots Texture */}
         <div className="absolute inset-0 -z-10 bg-pattern-dots [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
@@ -94,7 +94,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Story Section */}
-      <section className="relative py-32 px-6 w-full">
+      <section className="relative py-20 px-6 w-full">
         {/* Background Lines Texture */}
         <div className="absolute inset-0 -z-10 bg-pattern-lines" />
 
@@ -105,7 +105,7 @@ const AboutUs: React.FC = () => {
           className="max-w-7xl mx-auto"
         >
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-medium text-slate-900 mb-8 text-center leading-tight">
+            <h2 className="text-5xl md:text-7xl font-medium text-slate-900 mb-8 text-center leading-tight">
               Our <span className="font-serif italic">Story</span>
             </h2>
             <div className="bg-slate-50 rounded-[3rem] p-10 md:p-16 border border-slate-100 shadow-lg">
@@ -124,7 +124,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Team Section */}
-      <section className="relative py-32 px-6 w-full">
+      <section className="relative py-20 px-6 w-full">
         {/* Background Dots Texture */}
         <div className="absolute inset-0 -z-10 bg-pattern-dots [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
@@ -134,7 +134,7 @@ const AboutUs: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="max-w-7xl mx-auto"
         >
-          <h2 className="text-4xl md:text-6xl font-medium text-slate-900 mb-16 text-center leading-tight">
+          <h2 className="text-5xl md:text-7xl font-medium text-slate-900 mb-16 text-center leading-tight">
             Meet the <span className="font-serif italic">Team</span>
           </h2>
 
@@ -223,7 +223,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Values Grid */}
-      <section className="relative py-32 px-6 w-full">
+      <section className="relative py-20 px-6 w-full">
         {/* Background Grid Texture */}
         <div className="absolute inset-0 -z-10 bg-pattern-grid [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
@@ -233,7 +233,7 @@ const AboutUs: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="max-w-7xl mx-auto"
         >
-          <h2 className="text-4xl md:text-6xl font-medium text-slate-900 mb-16 text-center leading-tight">
+          <h2 className="text-5xl md:text-7xl font-medium text-slate-900 mb-16 text-center leading-tight">
             What We <span className="font-serif italic">Stand For</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -258,7 +258,7 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 px-6 w-full">
+      <section className="relative py-20 px-6 w-full">
         {/* Background Dots Texture */}
         <div className="absolute inset-0 -z-10 bg-pattern-dots [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
 
@@ -279,15 +279,17 @@ const AboutUs: React.FC = () => {
             <p className="text-white/80 text-xl mb-10 max-w-2xl mx-auto">
               Start building better financial habits today. Your future self will thank you.
             </p>
-            <button className="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center gap-3 mx-auto">
-              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-              </svg>
-              <div className="text-left">
-                <div className="text-[10px] leading-none mb-0.5">Download on the</div>
-                <div className="text-xl font-semibold leading-none">App Store</div>
-              </div>
-            </button>
+            <a href="https://apps.apple.com/si/app/pennywise-finance-tracker/id6754343519" target="_blank" rel="noopener noreferrer">
+              <button className="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center gap-3 mx-auto">
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                </svg>
+                <div className="text-left">
+                  <div className="text-[10px] leading-none mb-0.5">Download on the</div>
+                  <div className="text-xl font-semibold leading-none">App Store</div>
+                </div>
+              </button>
+            </a>
           </div>
         </motion.div>
       </section>
