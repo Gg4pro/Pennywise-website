@@ -70,6 +70,7 @@ const Navbar: React.FC = () => {
     { label: 'Features', id: 'features', type: 'scroll' },
     { label: 'How it works', id: 'how-it-works', type: 'scroll' },
     { label: 'Reviews', id: 'testimonials', type: 'scroll' },
+    { label: 'Blog', path: '/blog', type: 'page' },
     { label: 'Contact Us', path: '/contact', type: 'page' },
     { label: 'About Us', path: '/about', type: 'page' }
   ];

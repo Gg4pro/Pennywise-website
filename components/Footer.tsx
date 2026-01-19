@@ -69,6 +69,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-slate-500">
               <li><button onClick={() => handleScrollTo('features')} className="hover:text-slate-900 transition-colors cursor-pointer">Features</button></li>
               <li><button onClick={() => handleScrollTo('how-it-works')} className="hover:text-slate-900 transition-colors cursor-pointer">How it works</button></li>
+              <li><button onClick={() => handleNavigation('/blog')} className="hover:text-slate-900 transition-colors cursor-pointer">Blog</button></li>
               <li><button onClick={() => handleScrollTo('testimonials')} className="hover:text-slate-900 transition-colors cursor-pointer">Reviews</button></li>
               <li><a href="https://apps.apple.com/si/app/pennywise-finance-tracker/id6754343519" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors cursor-pointer">Download</a></li>
             </ul>
