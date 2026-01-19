@@ -2,49 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, TrendingUp, PiggyBank, Target, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// Blog post type definition
-interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  categoryColor: 'blue' | 'emerald' | 'purple' | 'orange' | 'pink';
-  date: string;
-  readTime: string;
-  featured?: boolean;
-  image?: string;
-}
-
-// Category color mapping
-const categoryColors = {
-  blue: {
-    bg: 'bg-blue-100',
-    text: 'text-blue-600',
-    gradient: 'from-blue-500 to-cyan-400',
-  },
-  emerald: {
-    bg: 'bg-emerald-100',
-    text: 'text-emerald-600',
-    gradient: 'from-emerald-500 to-teal-400',
-  },
-  purple: {
-    bg: 'bg-purple-100',
-    text: 'text-purple-600',
-    gradient: 'from-purple-500 to-pink-500',
-  },
-  orange: {
-    bg: 'bg-orange-100',
-    text: 'text-orange-600',
-    gradient: 'from-orange-400 to-pink-500',
-  },
-  pink: {
-    bg: 'bg-pink-100',
-    text: 'text-pink-600',
-    gradient: 'from-pink-500 to-rose-500',
-  },
-};
+import { getAllBlogPosts, getFeaturedPosts, formatDate } from '../utils/blogLoader';
+import { categoryColors, featuredCardStyles } from '../types/blog';
+import type { BlogPost } from '../types/blog';
 
 // Category icons mapping
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -53,149 +13,6 @@ const categoryIcons: { [key: string]: React.ElementType } = {
   'Investing': TrendingUp,
   'Security': Shield,
 };
-
-// SEO-optimized blog posts sorted by date (newest first)
-// Keywords targeted: budget app, expense tracker, personal finance, money management, savings goals
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    slug: 'best-budget-app-for-couples-2026',
-    title: 'Best Budget App for Couples: How to Track Shared Expenses Together',
-    excerpt: 'Managing money as a couple can be tricky. Learn how to choose a budget app that helps you and your partner stay on the same page with shared expenses and savings goals.',
-    category: 'Budgeting',
-    categoryColor: 'blue',
-    date: '2026-01-19',
-    readTime: '6 min read',
-    featured: true,
-  },
-  {
-    id: '2',
-    slug: 'how-to-save-money-on-groceries',
-    title: 'How to Save Money on Groceries: 12 Proven Strategies That Work',
-    excerpt: 'Groceries are one of the biggest monthly expenses for most households. These 12 strategies will help you cut your food bill without sacrificing quality or nutrition.',
-    category: 'Saving',
-    categoryColor: 'emerald',
-    date: '2026-01-15',
-    readTime: '8 min read',
-    featured: true,
-  },
-  {
-    id: '3',
-    slug: 'expense-tracker-app-no-bank-login',
-    title: 'Why an Expense Tracker App Without Bank Login Is Better for Your Privacy',
-    excerpt: 'Not comfortable linking your bank account to an app? You are not alone. Discover why manual expense tracking gives you more control and better security.',
-    category: 'Security',
-    categoryColor: 'pink',
-    date: '2026-01-10',
-    readTime: '5 min read',
-    featured: true,
-  },
-  {
-    id: '4',
-    slug: 'monthly-budget-template-beginners',
-    title: 'Monthly Budget Template for Beginners: Start Managing Your Money Today',
-    excerpt: 'Creating your first budget does not have to be complicated. This simple monthly budget template will help you take control of your finances in under 30 minutes.',
-    category: 'Budgeting',
-    categoryColor: 'purple',
-    date: '2026-01-05',
-    readTime: '7 min read',
-  },
-  {
-    id: '5',
-    slug: 'how-to-track-daily-expenses',
-    title: 'How to Track Daily Expenses: Build a Habit That Transforms Your Finances',
-    excerpt: 'The secret to financial success is knowing where your money goes. Learn how to build a daily expense tracking habit that sticks and helps you reach your goals.',
-    category: 'Budgeting',
-    categoryColor: 'blue',
-    date: '2025-12-28',
-    readTime: '6 min read',
-  },
-  {
-    id: '6',
-    slug: 'emergency-fund-how-much-to-save',
-    title: 'Emergency Fund: How Much Should You Save and Where to Keep It',
-    excerpt: 'An emergency fund is your financial safety net. Find out exactly how much you need to save based on your situation and the best places to keep your emergency savings.',
-    category: 'Saving',
-    categoryColor: 'emerald',
-    date: '2025-12-20',
-    readTime: '7 min read',
-  },
-  {
-    id: '7',
-    slug: 'cash-envelope-system-digital-alternative',
-    title: 'Cash Envelope System: A Digital Alternative for Modern Budgeters',
-    excerpt: 'Love the cash envelope method but hate carrying cash? Learn how to apply this proven budgeting technique using a digital expense tracker app.',
-    category: 'Budgeting',
-    categoryColor: 'orange',
-    date: '2025-12-12',
-    readTime: '5 min read',
-  },
-  {
-    id: '8',
-    slug: 'financial-goals-for-your-20s',
-    title: '7 Financial Goals Everyone Should Set in Their 20s',
-    excerpt: 'Your 20s are the best time to build strong financial habits. These seven goals will set you up for long term wealth and financial freedom.',
-    category: 'Saving',
-    categoryColor: 'emerald',
-    date: '2025-12-01',
-    readTime: '8 min read',
-  },
-  {
-    id: '9',
-    slug: 'stop-overspending-practical-tips',
-    title: 'How to Stop Overspending: 9 Practical Tips That Actually Work',
-    excerpt: 'Struggling to stick to your budget? These nine practical tips will help you identify your spending triggers and break the cycle of overspending for good.',
-    category: 'Budgeting',
-    categoryColor: 'purple',
-    date: '2025-11-18',
-    readTime: '6 min read',
-  },
-  {
-    id: '10',
-    slug: 'simple-money-management-tips',
-    title: 'Simple Money Management Tips for People Who Hate Budgeting',
-    excerpt: 'Not everyone loves spreadsheets and detailed budgets. If traditional budgeting feels overwhelming, try these simple money management strategies instead.',
-    category: 'Budgeting',
-    categoryColor: 'blue',
-    date: '2025-10-15',
-    readTime: '5 min read',
-  },
-];
-
-// Format date to readable string
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-};
-
-// Featured card color configurations
-const featuredCardStyles = [
-  {
-    // Blue card
-    gradient: 'from-blue-600 to-blue-700',
-    shadow: 'shadow-blue-200',
-    blobLight: 'bg-blue-400',
-    blobDark: 'bg-blue-800',
-  },
-  {
-    // Green card
-    gradient: 'from-emerald-500 to-teal-600',
-    shadow: 'shadow-emerald-200',
-    blobLight: 'bg-emerald-400',
-    blobDark: 'bg-teal-700',
-  },
-  {
-    // Red card
-    gradient: 'from-rose-500 to-red-600',
-    shadow: 'shadow-rose-200',
-    blobLight: 'bg-rose-400',
-    blobDark: 'bg-red-700',
-  },
-];
 
 // Featured Post Card Component
 const FeaturedPostCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) => {
@@ -323,10 +140,9 @@ const POSTS_PER_PAGE = 6;
 const Blog: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const featuredPosts = blogPosts.filter((post) => post.featured);
-
-  // All posts (including featured) for the "All Articles" section
-  const allPosts = blogPosts;
+  // Load posts from JSON files
+  const featuredPosts = getFeaturedPosts();
+  const allPosts = getAllBlogPosts();
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   // Get posts for current page
