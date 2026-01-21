@@ -87,10 +87,10 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const IconComponent = categoryIcons[post.category] || TrendingUp;
 
   return (
-    <Link to={`/blog/${post.slug}`}>
+    <Link to={`/blog/${post.slug}`} className="block h-full">
       <motion.article
         whileHover={{ scale: 1.02 }}
-        className="bg-white rounded-[2.5rem] p-8 shadow-lg border border-slate-100 hover:shadow-2xl hover:shadow-slate-300/50 transition-all cursor-pointer group h-full flex flex-col"
+        className="bg-white rounded-[2.5rem] p-8 shadow-lg border border-slate-100 hover:shadow-2xl hover:shadow-slate-300/50 transition-all cursor-pointer group h-full min-h-[320px] flex flex-col"
       >
         {/* Category Badge */}
         <div className="flex items-center gap-3 mb-5">
@@ -103,12 +103,12 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-3 leading-tight">
+        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-3 leading-tight line-clamp-2 min-h-[3.5rem]">
           {post.title}
         </h3>
 
         {/* Excerpt */}
-        <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
+        <p className="text-slate-600 leading-relaxed mb-6 flex-grow line-clamp-3 min-h-[4.5rem]">
           {post.excerpt}
         </p>
 
@@ -230,43 +230,67 @@ const Blog: React.FC = () => {
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="mt-12 flex items-center justify-center gap-2">
+            <div className="mt-12 flex items-center justify-center gap-3">
               {/* Previous Button */}
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-lg ${
                   currentPage === 1
-                    ? 'bg-slate-100 text-slate-300 cursor-not-allowed'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:scale-105 active:scale-95'
+                    ? 'bg-white text-slate-300 cursor-not-allowed shadow-slate-200/50'
+                    : 'bg-white text-slate-600 hover:bg-slate-50 hover:scale-105 hover:shadow-xl active:scale-95 shadow-slate-300/50'
                 }`}
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
-              {/* Page Numbers */}
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`w-12 h-12 rounded-full font-medium transition-all ${
-                    currentPage === page
-                      ? 'bg-slate-900 text-white shadow-lg'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:scale-105 active:scale-95'
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+              {/* Page Numbers - Fixed 3 slots, always centered current page */}
+              {(() => {
+                // Calculate which 3 pages to show
+                let pages: number[];
+
+                if (totalPages <= 3) {
+                  // If 3 or fewer pages, show all
+                  pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+                } else if (currentPage === 1) {
+                  // At the beginning: show 1, 2, 3
+                  pages = [1, 2, 3];
+                } else if (currentPage === totalPages) {
+                  // At the end: show last 3
+                  pages = [totalPages - 2, totalPages - 1, totalPages];
+                } else {
+                  // In the middle: current page centered
+                  pages = [currentPage - 1, currentPage, currentPage + 1];
+                }
+
+                // Render exactly 3 fixed slots (left, center, right)
+                return (
+                  <div className="flex items-center gap-3">
+                    {pages.map((page, index) => (
+                      <button
+                        key={`slot-${index}`}
+                        onClick={() => handlePageChange(page)}
+                        className={`w-12 h-12 rounded-full font-medium shadow-lg ${
+                          currentPage === page
+                            ? 'bg-slate-900 text-white shadow-slate-900/30'
+                            : 'bg-white text-slate-600 hover:bg-slate-50 hover:scale-105 hover:shadow-xl active:scale-95 shadow-slate-300/50'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                  </div>
+                );
+              })()}
 
               {/* Next Button */}
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-lg ${
                   currentPage === totalPages
-                    ? 'bg-slate-100 text-slate-300 cursor-not-allowed'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:scale-105 active:scale-95'
+                    ? 'bg-white text-slate-300 cursor-not-allowed shadow-slate-200/50'
+                    : 'bg-white text-slate-600 hover:bg-slate-50 hover:scale-105 hover:shadow-xl active:scale-95 shadow-slate-300/50'
                 }`}
               >
                 <ChevronRight className="w-5 h-5" />
