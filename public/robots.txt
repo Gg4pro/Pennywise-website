@@ -1,0 +1,11 @@
+# Pennywise - www.pennywise-app.com
+# Budget & Expense Tracker App for iOS
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.pennywise-app.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowLeft, Linkedin, Copy, Check, PiggyBank, Target, TrendingUp, Shield } from 'lucide-react';
 
@@ -237,7 +238,67 @@ const BlogPost: React.FC = () => {
     return elements;
   };
 
+  // Generate canonical URL
+  const canonicalUrl = `https://www.pennywise-app.com/blog/${post.slug}`;
+
   return (
+    <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{post.title} | Pennywise Blog</title>
+        <meta name="description" content={post.excerpt} />
+        <meta name="keywords" content={[post.targetKeyword, ...(post.relatedKeywords || [])].join(', ')} />
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:site_name" content="Pennywise" />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:author" content={post.author.name} />
+        <meta property="article:section" content={post.category} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+
+        {/* Article Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": post.title,
+            "description": post.excerpt,
+            "image": "https://www.pennywise-app.com/images/og-image.png",
+            "author": {
+              "@type": "Organization",
+              "name": post.author.name
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Pennywise",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.pennywise-app.com/images/pennywise-logo.png"
+              }
+            },
+            "datePublished": post.date,
+            "dateModified": post.publishedAt || post.date,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": canonicalUrl
+            },
+            "keywords": [post.targetKeyword, ...(post.relatedKeywords || [])].join(', ')
+          })}
+        </script>
+      </Helmet>
+
     <div className="relative min-h-screen">
       {/* Hero Section */}
       <section className={`relative pt-32 pb-20 px-6 w-full bg-gradient-to-br ${colors.gradient}`}>
@@ -428,6 +489,7 @@ const BlogPost: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

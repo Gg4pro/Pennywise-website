@@ -1,9 +1,51 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Mail, MessageCircle, Clock } from 'lucide-react';
 
 const ContactUs: React.FC = () => {
   return (
+    <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Contact Pennywise - Get Help with Your Budget App</title>
+        <meta name="description" content="Have questions about Pennywise? Contact our support team for help with the budget app, feedback, or general inquiries. We typically respond within 24-48 hours." />
+        <meta name="keywords" content="contact pennywise, budget app support, pennywise help, finance app contact" />
+        <link rel="canonical" href="https://www.pennywise-app.com/contact" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.pennywise-app.com/contact" />
+        <meta property="og:title" content="Contact Pennywise - Get Help" />
+        <meta property="og:description" content="Have questions about Pennywise? Contact our support team for help with the budget app." />
+        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:site_name" content="Pennywise" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.pennywise-app.com/contact" />
+        <meta name="twitter:title" content="Contact Pennywise - Get Help" />
+        <meta name="twitter:description" content="Have questions about Pennywise? Contact our support team." />
+        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+
+        {/* Contact Page Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Pennywise",
+            "description": "Contact our support team for help with the Pennywise budget app.",
+            "url": "https://www.pennywise-app.com/contact",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Pennywise",
+              "email": "info@pennywise-app.com",
+              "url": "https://www.pennywise-app.com"
+            }
+          })}
+        </script>
+      </Helmet>
+
     <div className="relative min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-6 w-full">
@@ -125,6 +167,7 @@ const ContactUs: React.FC = () => {
         </motion.div>
       </section>
     </div>
+    </>
   );
 };
 

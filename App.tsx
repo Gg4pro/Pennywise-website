@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   });
 
   return (
+    <HelmetProvider>
     <Router>
       <div className="relative min-h-screen">
         {/* Global Noise Texture */}
@@ -42,6 +44,7 @@ const App: React.FC = () => {
         <Footer />
       </div>
     </Router>
+    </HelmetProvider>
   );
 };
 

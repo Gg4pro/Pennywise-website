@@ -1,9 +1,51 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Target, Heart, Users, Sparkles } from 'lucide-react';
 
 const AboutUs: React.FC = () => {
   return (
+    <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>About Pennywise - Our Mission to Simplify Personal Finance</title>
+        <meta name="description" content="Learn about Pennywise, the team behind the simple budget app for iOS. Our mission is to make financial wellness accessible, simple, and stress-free for everyone." />
+        <meta name="keywords" content="about pennywise, budget app team, personal finance app, financial wellness, money management" />
+        <link rel="canonical" href="https://www.pennywise-app.com/about" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.pennywise-app.com/about" />
+        <meta property="og:title" content="About Pennywise - Our Mission" />
+        <meta property="og:description" content="Learn about Pennywise and our mission to make financial wellness accessible, simple, and stress-free for everyone." />
+        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:site_name" content="Pennywise" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.pennywise-app.com/about" />
+        <meta name="twitter:title" content="About Pennywise - Our Mission" />
+        <meta name="twitter:description" content="Learn about Pennywise and our mission to make financial wellness accessible for everyone." />
+        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+
+        {/* About Page Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Pennywise",
+            "description": "Learn about Pennywise and our mission to make financial wellness accessible.",
+            "url": "https://www.pennywise-app.com/about",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Pennywise",
+              "description": "Pennywise helps you track expenses, build budgets, and achieve financial freedom.",
+              "url": "https://www.pennywise-app.com"
+            }
+          })}
+        </script>
+      </Helmet>
+
     <div className="relative min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-6 w-full">
@@ -144,8 +186,8 @@ const AboutUs: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/team-1.png"
-                    alt="Team Member"
+                    src="/images/team-1.jpg"
+                    alt="Gregor, Founder & CEO of Pennywise"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -164,8 +206,8 @@ const AboutUs: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/team-2.png"
-                    alt="Team Member"
+                    src="/images/team-2.jpg"
+                    alt="Blaz, Head of Engineering at Pennywise"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -184,8 +226,8 @@ const AboutUs: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/team-3.png"
-                    alt="Team Member"
+                    src="/images/team-3.jpg"
+                    alt="Timotej, Head of Product at Pennywise"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -204,8 +246,8 @@ const AboutUs: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/team-4.png"
-                    alt="Team Member"
+                    src="/images/team-4.jpg"
+                    alt="Anika, Head of Marketing at Pennywise"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -294,6 +336,7 @@ const AboutUs: React.FC = () => {
         </motion.div>
       </section>
     </div>
+    </>
   );
 };
 

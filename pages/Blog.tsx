@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, TrendingUp, PiggyBank, Target, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -156,6 +157,49 @@ const Blog: React.FC = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Personal Finance Blog | Budgeting Tips & Money Advice | Pennywise</title>
+        <meta name="description" content="Expert budgeting tips, money management advice, and personal finance guides. Learn how to track expenses, save money, and achieve your financial goals with Pennywise." />
+        <meta name="keywords" content="budgeting tips, personal finance blog, money management, expense tracking, saving money, financial advice, budget planning" />
+        <link rel="canonical" href="https://www.pennywise-app.com/blog" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.pennywise-app.com/blog" />
+        <meta property="og:title" content="Personal Finance Blog | Pennywise" />
+        <meta property="og:description" content="Expert budgeting tips, money management advice, and personal finance guides to help you achieve financial freedom." />
+        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:site_name" content="Pennywise" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.pennywise-app.com/blog" />
+        <meta name="twitter:title" content="Personal Finance Blog | Pennywise" />
+        <meta name="twitter:description" content="Expert budgeting tips, money management advice, and personal finance guides." />
+        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+
+        {/* Blog Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Pennywise Blog",
+            "description": "Expert budgeting tips, money management advice, and personal finance guides.",
+            "url": "https://www.pennywise-app.com/blog",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Pennywise",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.pennywise-app.com/images/pennywise-logo.png"
+              }
+            }
+          })}
+        </script>
+      </Helmet>
+
     <div className="relative min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-6 w-full">
@@ -344,6 +388,7 @@ const Blog: React.FC = () => {
         </motion.div>
       </section>
     </div>
+    </>
   );
 };
 
