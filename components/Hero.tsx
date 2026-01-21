@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
 
           {/* Screen reader text for additional SEO context */}
           <span className="sr-only">
-            Pennywise is a free budget app and expense tracker for iOS that helps you manage your personal finances, track spending, and build better money habits.
+            Pennywise is a free budget app and expense tracker that helps you manage your personal finances, track spending, and build better money habits.
           </span>
 
           <p className="text-lg text-slate-500 font-medium mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed tracking-tight">
