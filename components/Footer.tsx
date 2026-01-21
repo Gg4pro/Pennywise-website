@@ -55,9 +55,9 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden">
-                 <img src="/images/pennywise-icon.png" alt="Pennywise Icon" className="h-9 w-9" />
+                 <img src="/images/pennywise-icon.png" alt="Pennywise budget app icon" className="h-9 w-9" />
                </div>
-               <img src="/images/pennywise-logo.png" alt="Pennywise" className="h-8" />
+               <img src="/images/pennywise-logo.png" alt="Pennywise - Budget & Expense Tracker" className="h-8" />
             </div>
             <p className="text-slate-500 max-w-xs">
               The road to financial freedom starts with a single penny.

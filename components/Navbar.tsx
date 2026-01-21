@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center cursor-pointer" onClick={() => handleNavigation('/')}>
-            <img src="/images/pennywise-logo.png" alt="Pennywise" className="h-10" />
+            <img src="/images/pennywise-logo.png" alt="Pennywise - Budget App Logo" className="h-10" />
           </div>
 
           {/* Desktop Menu */}

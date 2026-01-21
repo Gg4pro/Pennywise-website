@@ -40,7 +40,7 @@ const Testimonials: React.FC = () => {
             <div className="flex items-center gap-4 mb-8">
               <img
                 src={review.image}
-                alt={review.name}
+                alt={`${review.name}, ${review.role} - Pennywise budget app user testimonial`}
                 className="w-14 h-14 rounded-full object-cover shadow-lg"
               />
               <div>

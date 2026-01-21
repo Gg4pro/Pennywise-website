@@ -10,8 +10,10 @@ const XIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getBlogPostBySlug, formatDate } from '../utils/blogLoader';
+import { getBlogPostBySlug, getRelatedPosts, formatDate } from '../utils/blogLoader';
 import { categoryColors } from '../types/blog';
+import RelatedPosts from '../components/RelatedPosts';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 // Category icons mapping
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -53,6 +55,9 @@ const BlogPost: React.FC = () => {
 
   // Get post data from JSON files
   const post = slug ? getBlogPostBySlug(slug) : null;
+
+  // Get related posts for the Related Posts section
+  const relatedPosts = slug ? getRelatedPosts(slug, 3) : [];
 
   // Handle 404
   if (!post) {
@@ -299,9 +304,9 @@ const BlogPost: React.FC = () => {
         </script>
       </Helmet>
 
-    <div className="relative min-h-screen">
+    <article itemScope itemType="https://schema.org/Article" className="relative min-h-screen">
       {/* Hero Section */}
-      <section className={`relative pt-32 pb-20 px-6 w-full bg-gradient-to-br ${colors.gradient}`}>
+      <header className={`relative pt-32 pb-20 px-6 w-full bg-gradient-to-br ${colors.gradient}`}>
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
@@ -309,11 +314,27 @@ const BlogPost: React.FC = () => {
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10">
+          {/* Breadcrumbs for SEO and navigation */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6"
+          >
+            <Breadcrumbs
+              items={[
+                { label: 'Blog', href: '/blog' },
+                { label: post.category, href: `/blog?category=${post.category}` },
+                { label: post.title }
+              ]}
+            />
+          </motion.div>
+
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <button
               onClick={() => navigate('/blog')}
@@ -343,6 +364,7 @@ const BlogPost: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-6xl font-medium text-white mb-8 leading-[1.1] tracking-tight"
+            itemProp="headline"
           >
             {post.title}
           </motion.h1>
@@ -357,7 +379,7 @@ const BlogPost: React.FC = () => {
             {/* Author */}
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-white/20">
-                <img src={post.author.image} alt={post.author.name} className="w-full h-full object-cover" />
+                <img src={post.author.image} alt={`${post.author.name}, ${post.author.role} - article author`} className="w-full h-full object-cover" />
               </div>
               <div>
                 <div className="font-medium text-white">{post.author.name}</div>
@@ -378,7 +400,7 @@ const BlogPost: React.FC = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </header>
 
       {/* Content Section */}
       <section className="relative py-16 px-6 w-full">
@@ -411,14 +433,15 @@ const BlogPost: React.FC = () => {
           </motion.div>
 
           {/* Article Content */}
-          <motion.article
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="prose prose-lg max-w-none"
+            itemProp="articleBody"
           >
             {renderContent(post.content)}
-          </motion.article>
+          </motion.div>
         </div>
       </section>
 
@@ -462,8 +485,13 @@ const BlogPost: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Related Posts Section */}
+      {relatedPosts.length > 0 && (
+        <RelatedPosts posts={relatedPosts} currentCategory={post.category} />
+      )}
+
       {/* Back to Blog Link */}
-      <section className="relative pb-20 px-6 w-full">
+      <footer className="relative pb-20 px-6 w-full">
         <div className="max-w-4xl mx-auto text-center">
           <button
             onClick={() => {
@@ -487,8 +515,8 @@ const BlogPost: React.FC = () => {
             Back to all articles
           </button>
         </div>
-      </section>
-    </div>
+      </footer>
+    </article>
     </>
   );
 };

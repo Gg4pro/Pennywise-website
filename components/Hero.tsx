@@ -22,12 +22,22 @@ const Hero: React.FC = () => {
               - Inter: Bold (700) + Tighter Tracking (-0.05em) 
               - Serif: Medium (500) override to match the 'Features' section style and avoid 700-weight distortion
           */}
-          <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-semibold text-black leading-[0.9] tracking-tighter mb-8 text-balance">
+          <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-semibold text-black leading-[0.9] tracking-tighter mb-6 text-balance">
             The road to <span className="font-serif italic font-medium">financial</span> freedom <br />
             starts with a single <span className="font-serif italic font-medium">penny.</span>
           </h1>
-          
-          <p className="text-xl text-slate-600 font-medium mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed tracking-tight">
+
+          {/* SEO-optimized subtitle with target keywords */}
+          <p className="text-lg md:text-xl text-slate-700 font-semibold mb-4 max-w-lg mx-auto lg:mx-0 tracking-tight">
+            The simple budget app & expense tracker that helps you take control of your money.
+          </p>
+
+          {/* Screen reader text for additional SEO context */}
+          <span className="sr-only">
+            Pennywise is a free budget app and expense tracker for iOS that helps you manage your personal finances, track spending, and build better money habits.
+          </span>
+
+          <p className="text-lg text-slate-500 font-medium mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed tracking-tight">
             Stop stressing and start enjoying your life with a simple financial plan you can actually stick to.
           </p>
 
@@ -71,7 +81,7 @@ const Hero: React.FC = () => {
                {/* Header */}
                <div className="flex justify-between items-center mb-4 md:mb-6">
                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
-                   <img src="/images/pennywise-icon.png" alt="Pennywise" className="w-full h-full object-cover" />
+                   <img src="/images/pennywise-icon.png" alt="Pennywise budget app icon" className="w-full h-full object-cover" />
                  </div>
                  <div className="w-8 h-8 rounded-full bg-slate-200"></div>
                </div>
