@@ -186,7 +186,7 @@ const AboutUs: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/team-1.jpg"
+                    src="/images/team-1.png"
                     alt="Gregor, Founder & CEO of Pennywise"
                     className="w-full h-full object-cover"
                   />
