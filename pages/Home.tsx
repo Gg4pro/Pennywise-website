@@ -6,6 +6,7 @@ import Features from '../components/Features';
 import HowItWorks from '../components/HowItWorks';
 import MobileAppShowcase from '../components/MobileAppShowcase';
 import Testimonials from '../components/Testimonials';
+import FAQ, { generateFAQSchema } from '../components/FAQ';
 import CTASection from '../components/CTASection';
 
 const Home: React.FC = () => {
@@ -86,6 +87,11 @@ const Home: React.FC = () => {
             }
           })}
         </script>
+
+        {/* FAQ Schema for rich snippets */}
+        <script type="application/ld+json">
+          {JSON.stringify(generateFAQSchema())}
+        </script>
       </Helmet>
 
       <div className="flex flex-col items-center w-full">
@@ -95,6 +101,7 @@ const Home: React.FC = () => {
         <HowItWorks />
         <MobileAppShowcase />
         <Testimonials />
+        <FAQ />
         <CTASection />
       </div>
     </>
