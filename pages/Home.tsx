@@ -17,22 +17,22 @@ const Home: React.FC = () => {
         <title>Pennywise | Simple Budget App & Expense Tracker</title>
         <meta name="description" content="Take control of your finances with Pennywise, the simple budget app that makes expense tracking easy. Set goals, build lasting habits. No bank connection required." />
         <meta name="keywords" content="budget app, expense tracker, personal finance app, money management, spending tracker, financial planning, pennywise app, simple budget app" />
-        <link rel="canonical" href="https://www.pennywise-app.com/" />
+        <link rel="canonical" href="https://pennywise-app.com/" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.pennywise-app.com/" />
+        <meta property="og:url" content="https://pennywise-app.com/" />
         <meta property="og:title" content="Pennywise | Simple Budget App & Expense Tracker" />
         <meta property="og:description" content="Take control of your finances with Pennywise, the simple budget app that makes expense tracking easy. Set goals, build lasting habits." />
-        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:image" content="https://pennywise-app.com/images/og-image.png" />
         <meta property="og:site_name" content="Pennywise" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://www.pennywise-app.com/" />
+        <meta name="twitter:url" content="https://pennywise-app.com/" />
         <meta name="twitter:title" content="Pennywise | Simple Budget App & Expense Tracker" />
         <meta name="twitter:description" content="Take control of your finances with Pennywise, the simple budget app that makes expense tracking easy." />
-        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta name="twitter:image" content="https://pennywise-app.com/images/og-image.png" />
 
         {/* SoftwareApplication Schema for App */}
         <script type="application/ld+json">
@@ -63,8 +63,8 @@ const Home: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Pennywise",
-            "url": "https://www.pennywise-app.com",
-            "logo": "https://www.pennywise-app.com/images/pennywise-icon.png",
+            "url": "https://pennywise-app.com",
+            "logo": "https://pennywise-app.com/images/pennywise-icon.png",
             "description": "Pennywise helps you take control of your finances with a simple, beautiful budget app.",
             "sameAs": [
               "https://www.instagram.com/pennywise_app",
@@ -79,10 +79,10 @@ const Home: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "Pennywise",
-            "url": "https://www.pennywise-app.com",
+            "url": "https://pennywise-app.com",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://www.pennywise-app.com/blog?q={search_term_string}",
+              "target": "https://pennywise-app.com/blog?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })}

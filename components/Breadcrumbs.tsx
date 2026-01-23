@@ -21,7 +21,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      ...(item.href && { "item": `https://www.pennywise-app.com${item.href}` })
+      ...(item.href && { "item": `https://pennywise-app.com${item.href}` })
     }))
   };
 

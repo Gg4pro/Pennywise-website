@@ -11,22 +11,22 @@ const AboutUs: React.FC = () => {
         <title>About Pennywise - Our Mission to Simplify Personal Finance</title>
         <meta name="description" content="Learn about Pennywise, the team behind the simple budget app for iOS. Our mission is to make financial wellness accessible, simple, and stress-free for everyone." />
         <meta name="keywords" content="about pennywise, budget app team, personal finance app, financial wellness, money management" />
-        <link rel="canonical" href="https://www.pennywise-app.com/about" />
+        <link rel="canonical" href="https://pennywise-app.com/about" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.pennywise-app.com/about" />
+        <meta property="og:url" content="https://pennywise-app.com/about" />
         <meta property="og:title" content="About Pennywise - Our Mission" />
         <meta property="og:description" content="Learn about Pennywise and our mission to make financial wellness accessible, simple, and stress-free for everyone." />
-        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:image" content="https://pennywise-app.com/images/og-image.png" />
         <meta property="og:site_name" content="Pennywise" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://www.pennywise-app.com/about" />
+        <meta name="twitter:url" content="https://pennywise-app.com/about" />
         <meta name="twitter:title" content="About Pennywise - Our Mission" />
         <meta name="twitter:description" content="Learn about Pennywise and our mission to make financial wellness accessible for everyone." />
-        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta name="twitter:image" content="https://pennywise-app.com/images/og-image.png" />
 
         {/* About Page Schema */}
         <script type="application/ld+json">
@@ -35,12 +35,12 @@ const AboutUs: React.FC = () => {
             "@type": "AboutPage",
             "name": "About Pennywise",
             "description": "Learn about Pennywise and our mission to make financial wellness accessible.",
-            "url": "https://www.pennywise-app.com/about",
+            "url": "https://pennywise-app.com/about",
             "mainEntity": {
               "@type": "Organization",
               "name": "Pennywise",
               "description": "Pennywise helps you track expenses, build budgets, and achieve financial freedom.",
-              "url": "https://www.pennywise-app.com"
+              "url": "https://pennywise-app.com"
             }
           })}
         </script>

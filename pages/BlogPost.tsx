@@ -244,7 +244,7 @@ const BlogPost: React.FC = () => {
   };
 
   // Generate canonical URL
-  const canonicalUrl = `https://www.pennywise-app.com/blog/${post.slug}`;
+  const canonicalUrl = `https://pennywise-app.com/blog/${post.slug}`;
 
   return (
     <>
@@ -260,7 +260,7 @@ const BlogPost: React.FC = () => {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta property="og:image" content="https://pennywise-app.com/images/og-image.png" />
         <meta property="og:site_name" content="Pennywise" />
         <meta property="article:published_time" content={post.date} />
         <meta property="article:author" content={post.author.name} />
@@ -271,7 +271,7 @@ const BlogPost: React.FC = () => {
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:image" content="https://www.pennywise-app.com/images/og-image.png" />
+        <meta name="twitter:image" content="https://pennywise-app.com/images/og-image.png" />
 
         {/* Article Schema */}
         <script type="application/ld+json">
@@ -280,7 +280,7 @@ const BlogPost: React.FC = () => {
             "@type": "Article",
             "headline": post.title,
             "description": post.excerpt,
-            "image": "https://www.pennywise-app.com/images/og-image.png",
+            "image": "https://pennywise-app.com/images/og-image.png",
             "author": {
               "@type": "Organization",
               "name": post.author.name
@@ -290,7 +290,7 @@ const BlogPost: React.FC = () => {
               "name": "Pennywise",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.pennywise-app.com/images/pennywise-logo.png"
+                "url": "https://pennywise-app.com/images/pennywise-logo.png"
               }
             },
             "datePublished": post.date,
