@@ -104,7 +104,7 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-3 leading-tight line-clamp-2 min-h-[3.5rem]">
+        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-3 leading-tight line-clamp-3 overflow-hidden">
           {post.title}
         </h3>
 
