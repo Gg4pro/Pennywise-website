@@ -8,17 +8,43 @@ import type { BlogPost, BlogPostMeta } from '../types/blog';
 // Using Vite's glob import feature for dynamic loading
 const blogPostModules = import.meta.glob('../data/blog-posts/*.json', { eager: true });
 
+// Valid categoryColor values that have matching styles in types/blog.ts
+const VALID_CATEGORY_COLORS = ['blue', 'emerald', 'purple', 'orange', 'pink'];
+
 // Parse and validate blog posts from imported modules
+// NOTE FOR BLAKE/SEO AGENT: If a post doesn't appear on the blog, check the
+// browser console for validation warnings. Common issues:
+//   - "id" must be a string (e.g. "25"), not a number
+//   - "categoryColor" must be one of: blue, emerald, purple, orange, pink
+//   - "content" should be markdown, not HTML
+//   - "status" must be "published" to appear on the site
 function loadBlogPosts(): BlogPost[] {
   const posts: BlogPost[] = [];
 
   for (const path in blogPostModules) {
-    const module = blogPostModules[path] as { default: BlogPost };
-    const post = module.default;
+    try {
+      const module = blogPostModules[path] as { default: BlogPost };
+      const post = module.default;
 
-    // Only include published posts
-    if (post && post.status === 'published') {
+      if (!post || post.status !== 'published') continue;
+
+      // Coerce id to string if it's a number (common Blake mistake)
+      if (typeof post.id === 'number') {
+        post.id = String(post.id);
+      }
+
+      // Validate and fix categoryColor to prevent runtime crash
+      if (!VALID_CATEGORY_COLORS.includes(post.categoryColor)) {
+        console.warn(
+          `[Blog] Post "${post.slug}" has invalid categoryColor "${post.categoryColor}". ` +
+          `Valid values: ${VALID_CATEGORY_COLORS.join(', ')}. Defaulting to "blue".`
+        );
+        post.categoryColor = 'blue';
+      }
+
       posts.push(post);
+    } catch (err) {
+      console.error(`[Blog] Failed to load post from ${path}:`, err);
     }
   }
 

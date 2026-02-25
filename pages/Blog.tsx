@@ -84,7 +84,7 @@ const FeaturedPostCard: React.FC<{ post: BlogPost; index: number }> = ({ post, i
 
 // Regular Post Card Component
 const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
-  const colors = categoryColors[post.categoryColor];
+  const colors = categoryColors[post.categoryColor] || categoryColors.blue;
   const IconComponent = categoryIcons[post.category] || TrendingUp;
 
   return (
