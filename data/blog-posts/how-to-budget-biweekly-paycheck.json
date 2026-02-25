@@ -11,5 +11,5 @@
     "name": "Pennywise Team",
     "avatar": "/images/pennywise-avatar.png"
   },
-  "headerColor": "green"
+  "headerColor": "green",   "status": "published"
 }
