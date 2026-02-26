@@ -26,6 +26,20 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://pennywise-app.com/" />
 
+    <!-- Dynamic canonical/og:url for SPA pages (runs before React hydrates) -->
+    <script>
+      (function() {
+        var url = window.location.href.split('?')[0].split('#')[0];
+        document.querySelector('link[rel="canonical"]').setAttribute('href', url);
+        document.addEventListener('DOMContentLoaded', function() {
+          var ogUrl = document.querySelector('meta[property="og:url"]');
+          if (ogUrl) ogUrl.setAttribute('content', url);
+          var twUrl = document.querySelector('meta[name="twitter:url"]');
+          if (twUrl) twUrl.setAttribute('content', url);
+        });
+      })();
+    </script>
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://pennywise-app.com/" />
