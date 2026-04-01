@@ -80,6 +80,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-slate-500">
               <li><button onClick={() => handleNavigation('/about')} className="hover:text-slate-900 transition-colors cursor-pointer">About Us</button></li>
               <li><button onClick={() => handleNavigation('/contact')} className="hover:text-slate-900 transition-colors cursor-pointer">Contact Us</button></li>
+              <li><button onClick={() => handleNavigation('/terms')} className="hover:text-slate-900 transition-colors cursor-pointer">Terms of Service</button></li>
+              <li><button onClick={() => handleNavigation('/privacy')} className="hover:text-slate-900 transition-colors cursor-pointer">Privacy Policy</button></li>
             </ul>
           </div>
         </div>

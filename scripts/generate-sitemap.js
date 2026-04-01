@@ -48,6 +48,8 @@ async function generateSitemap() {
     { loc: '/', lastmod: today, changefreq: 'weekly', priority: '1.0' },
     { loc: '/about', lastmod: today, changefreq: 'monthly', priority: '0.8' },
     { loc: '/contact', lastmod: today, changefreq: 'monthly', priority: '0.6' },
+    { loc: '/terms', lastmod: '2026-04-01', changefreq: 'yearly', priority: '0.4' },
+    { loc: '/privacy', lastmod: '2026-04-01', changefreq: 'yearly', priority: '0.4' },
     { loc: '/blog', lastmod: today, changefreq: 'daily', priority: '0.9' },
     // Blog posts
     ...blogEntries.map(entry => ({
@@ -75,7 +77,7 @@ async function generateSitemap() {
 
   await writeFile(SITEMAP_PATH, xml);
 
-  console.log(`Sitemap generated: ${blogEntries.length} blog posts + 4 static pages`);
+  console.log(`Sitemap generated: ${blogEntries.length} blog posts + 6 static pages`);
   console.log(`Written to: ${SITEMAP_PATH}`);
 }
 
