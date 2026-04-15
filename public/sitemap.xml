@@ -337,6 +337,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://pennywise-app.com/blog/password-security-protect-financial-accounts</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://pennywise-app.com/blog/pay-yourself-first-automate-savings</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -464,6 +470,12 @@
   </url>
   <url>
     <loc>https://pennywise-app.com/blog/what-is-dollar-cost-averaging-beginners-guide</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pennywise-app.com/blog/what-is-roth-ira-beginners-guide</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
