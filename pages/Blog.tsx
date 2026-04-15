@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, TrendingUp, PiggyBank, Target, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Clock, ArrowRight, TrendingUp, PiggyBank, Target, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { getAllBlogPosts, getFeaturedPosts, formatDate } from '../utils/blogLoader';
+import { getAllBlogPosts, getFeaturedPosts } from '../utils/blogLoader';
 import { categoryColors, featuredCardStyles } from '../types/blog';
 import type { BlogPost } from '../types/blog';
 
@@ -62,10 +62,6 @@ const FeaturedPostCard: React.FC<{ post: BlogPost; index: number }> = ({ post, i
           <div className="flex items-center justify-between mt-auto">
             <div className="flex items-center gap-4 text-sm text-white/60">
               <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" />
-                <span>{formatDate(post.date)}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
                 <span>{post.readTime}</span>
               </div>
@@ -116,10 +112,6 @@ const PostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
         {/* Meta Info */}
         <div className="flex items-center justify-between pt-4 border-t border-slate-100">
           <div className="flex items-center gap-4 text-sm text-slate-500">
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4" />
-              <span>{formatDate(post.date)}</span>
-            </div>
             <div className="flex items-center gap-1.5">
               <Clock className="w-4 h-4" />
               <span>{post.readTime}</span>

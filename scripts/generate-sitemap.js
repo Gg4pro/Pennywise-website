@@ -30,7 +30,7 @@ async function generateSitemap() {
 
       blogEntries.push({
         slug: post.slug,
-        date: post.date,
+        date: post.dateModified || post.date,
       });
     } catch (err) {
       console.warn(`Warning: Could not parse ${file}:`, err.message);

@@ -15,6 +15,7 @@ export interface BlogPostMeta {
   category: 'Budgeting' | 'Saving' | 'Investing' | 'Security';
   categoryColor: 'blue' | 'emerald' | 'purple' | 'orange' | 'pink';
   date: string; // ISO format: YYYY-MM-DD
+  dateModified?: string; // ISO format: YYYY-MM-DD, set when content is updated
   readTime: string;
   featured?: boolean;
   author: BlogPostAuthor;

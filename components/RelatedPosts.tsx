@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
 import { BlogPost, categoryColors } from '../types/blog';
-import { formatDate } from '../utils/blogLoader';
 
 interface RelatedPostsProps {
   posts: BlogPost[];
@@ -60,7 +59,6 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, currentCategory }) =
                         </h3>
 
                         <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
-                          <span>{formatDate(post.date)}</span>
                           <span className="flex items-center gap-1">
                             <Clock className="w-3.5 h-3.5" />
                             {post.readTime}

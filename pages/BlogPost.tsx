@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowLeft, Linkedin, Copy, Check, PiggyBank, Target, TrendingUp, Shield } from 'lucide-react';
+import { Clock, ArrowLeft, Linkedin, Copy, Check, PiggyBank, Target, TrendingUp, Shield } from 'lucide-react';
 
 // X (formerly Twitter) icon component
 const XIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -10,7 +10,7 @@ const XIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getBlogPostBySlug, getRelatedPosts, formatDate } from '../utils/blogLoader';
+import { getBlogPostBySlug, getRelatedPosts } from '../utils/blogLoader';
 import { categoryColors } from '../types/blog';
 import RelatedPosts from '../components/RelatedPosts';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -191,7 +191,12 @@ const BlogPost: React.FC = () => {
         // Handle bold text and links
         const formatted = itemText
           .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">$1</a>');
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => {
+            if (url.startsWith('/')) {
+              return `<a href="${url}" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">${text}</a>`;
+            }
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">${text}</a>`;
+          });
         listItems.push(formatted);
         return;
       } else if (inList && trimmed === '') {
@@ -205,7 +210,12 @@ const BlogPost: React.FC = () => {
         const itemText = trimmed.replace(/^\d+\.\s+/, '');
         const formatted = itemText
           .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">$1</a>');
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => {
+            if (url.startsWith('/')) {
+              return `<a href="${url}" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">${text}</a>`;
+            }
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">${text}</a>`;
+          });
         elements.push(
           <div key={index} className="flex gap-4 mb-4">
             <span className="text-slate-900 font-medium">{trimmed.match(/^\d+/)?.[0]}.</span>
@@ -225,7 +235,12 @@ const BlogPost: React.FC = () => {
         let formatted = trimmed
           .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
           .replace(/\*(.+?)\*/g, '<em>$1</em>')
-          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">$1</a>');
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => {
+            if (url.startsWith('/')) {
+              return `<a href="${url}" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">${text}</a>`;
+            }
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline underline-offset-2">${text}</a>`;
+          });
 
         elements.push(
           <p
@@ -283,7 +298,9 @@ const BlogPost: React.FC = () => {
             "image": "https://pennywise-app.com/images/og-image.png",
             "author": {
               "@type": "Organization",
-              "name": post.author.name
+              "name": post.author.name,
+              "description": "The Pennywise Team researches and writes about budgeting, saving, investing, and financial security to help you build better money habits.",
+              "url": "https://pennywise-app.com/about"
             },
             "publisher": {
               "@type": "Organization",
@@ -294,7 +311,7 @@ const BlogPost: React.FC = () => {
               }
             },
             "datePublished": post.date,
-            "dateModified": post.publishedAt || post.date,
+            "dateModified": post.dateModified || post.date,
             "mainEntityOfPage": {
               "@type": "WebPage",
               "@id": canonicalUrl
@@ -387,12 +404,8 @@ const BlogPost: React.FC = () => {
               </div>
             </div>
 
-            {/* Date & Read Time */}
+            {/* Read Time */}
             <div className="flex items-center gap-4 text-sm text-white/70">
-              <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" />
-                <span>{formatDate(post.date)}</span>
-              </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4" />
                 <span>{post.readTime}</span>
@@ -442,6 +455,31 @@ const BlogPost: React.FC = () => {
           >
             {renderContent(post.content)}
           </motion.div>
+
+          {/* Financial Disclaimer */}
+          <div className="mt-12 pt-6 border-t border-slate-200">
+            <p className="text-sm text-slate-400 leading-relaxed">
+              This content is for informational purposes only and does not constitute financial advice. Consult a qualified professional for advice specific to your situation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Author Bio Section */}
+      <section className="relative px-6 pb-12 w-full">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-slate-50 rounded-2xl p-8 flex items-start gap-5">
+            <div className="w-16 h-16 rounded-xl overflow-hidden bg-white shadow-sm flex-shrink-0">
+              <img src="/images/pennywise-icon.png" alt="Pennywise Team" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <div className="font-medium text-slate-900 text-lg">Pennywise Team</div>
+              <div className="text-sm text-slate-500 mb-3">Personal Finance Editors</div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                The Pennywise Team researches and writes about budgeting, saving, investing, and financial security to help you build better money habits. Every article is thoroughly researched using authoritative financial sources.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
